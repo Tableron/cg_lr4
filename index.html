@@ -4,11 +4,25 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="blenderModel" src="models/model.glb"></a-asset-item>
+      </a-assets>
+        
+      <a-entity 
+          gltf-model="#blenderModel"
+          enhance-shadows
+          position="0 2 -8"
+          scale="2 2 2"
+          shadow="cast: true; receive: true"
+          animation="property: rotation; to: 0 -360 0; loop: true; dur: 30000; easing: linear">
+      </a-entity>
+
+      
       <a-marker preset="hiro">
         <a-entity
           position="0 0 0"
           scale="0.05 0.05 0.05"
-          gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+          gltf-model="#blenderModel"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
