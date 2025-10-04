@@ -1,0 +1,20 @@
+<script>
+AFRAME.registerComponent('enhance-shadows', {
+    init: function () {
+        this.el.addEventListener('model-loaded', () => {
+            const model = this.el.getObject3D('mesh');
+            if (model) {
+                model.traverse((node) => {
+                    if (node.isMesh) {
+                        node.castShadow = true;
+                        node.receiveShadow = true;
+                        if (node.material) {
+                            node.material.needsUpdate = true;
+                        }
+                    }
+                });
+            }
+        });
+    }
+});
+</script>
